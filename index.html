@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLA Statistics</title>
+    <!-- Import index.js -->
+    <style>
+      /* Add some basic styling to change the font to something friendly, to center the content with a 20% margin either side */
+      body {
+        background-color: rgba(0, 0, 0, 0.866);
+        /* font-size: small; */
+        /* Monospace hacker style font */
+        font: 12pt "Fira Code", monospace;
+        /* Nice friendly font */
+        color: #a8cf42;
+      }
+      fieldset {
+        background-color: rgba(70, 69, 69, 0.662);
+        border: 1px solid #a8cf42;
+        /* Drop shadow */
+        -webkit-box-shadow: 0px 0px 10px 0px #a8cf42;
+        box-shadow: 0px 0px 10px 0px #a8cf42;
+      }
+      fieldset {
+        color: white;
+      }
+      fieldset b {
+        color: #a8cf42;
+      }
+
+      table {
+        margin: auto auto;
+        padding: 5px;
+        border: 1px solid white;
+      }
+
+      th {
+        color: #a8cf42;
+        font-size: 130%;
+      }
+
+      td {
+        color: white;
+        border: 1px solid #a8cf42;
+        padding: 3px 5px;
+        box-shadow: 0px 0px 10px 0px #a8cf42;
+      }
+
+      h2,
+      h1 {
+        color: white;
+      }
+      .container {
+        text-align: center;
+        margin: 0 33%;
+      }
+
+      button {
+        padding: 0.3rem 0.5rem;
+        font: 12pt "Fira Code", monospace;
+        border: 1px solid #a8cf42;
+      }
+
+      button.active {
+        background-color: #a8cf42;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- App for providing statistics pulled from a GraphQL API -->
+      <h1>GCD Milford SLA Statistics</h1>
+      <!-- Two buttons, one for 2023 and one for 2022 -->
+      <!-- Clicking one of these calls main(year) -->
+      <button id="btn-2023" onclick="main(2023)">2023 Board</button>
+      <button id="btn-2022" onclick="main(2022)">2022 Board</button>
+      <div id="data"></div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
