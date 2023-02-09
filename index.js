@@ -5,16 +5,6 @@ const BOARD_ID_2022 = 3906645333;
 const getMondayRequestResults = async (year) => {
   const BOARD_ID = eval(`BOARD_ID_${year}`);
 
-  /**
-   * Get the API key from the env.json file, structure of the file:
-   * {
-   *  "API_KEY": "YOUR_API_KEY"
-   * }
-   */
-  const apiKey = await fetch("env.json")
-    .then((res) => res.json())
-    .then((res) => res.API_KEY);
-
   const graphql = JSON.stringify({
     query: `{ 
       boards(ids: ${BOARD_ID}) {
@@ -38,7 +28,7 @@ const getMondayRequestResults = async (year) => {
   return await fetch("https://api.monday.com/v2", {
     method: "POST",
     headers: new Headers({
-      Authorization: "Bearer " + apiKey,
+      Authorization: "Bearer " + window["API_KEY"],
       "Content-Type": "application/json",
     }),
     body: graphql,
@@ -97,6 +87,8 @@ main = async (year = 2023) => {
   });
 
   for (let i = 0; i < items_per_month.length; i++) {
+    if (!items_per_month[i]["items"][0]) return;
+
     // Get the month and year from an item, and convert to a string value, e.g. 'January 2021'
     let monthAndYearHumanReadable =
       items_per_month[i]["items"][0]["created_at"];
